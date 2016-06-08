@@ -2,6 +2,8 @@ $(document).ready(function () {
 	$('.upload-btn').on('click',function (e) {
 		e.preventDefault();
 		$("#upload-input").click();
+		$('.data-container').show();
+		$('pre').hide();
 		$('.img-container').empty().html('<div class="icon"><i class="fa fa-file-image-o"></i></div>');	
 		$('.progress .determinate').width('0%');
 	});
@@ -37,7 +39,8 @@ $(document).ready(function () {
 							$('.img-container').empty().html('<div class="icon"><i class="fa fa-file-image-o"></i></div>');	
 						},1000)
 					}
-					$('pre').text(JSON.stringify(data,null,' '));
+					$('.data-container').hide();
+					$('pre').show().text(JSON.stringify(data,null,' '));
 				},
 				xhr:function(){
 					var xhr = new XMLHttpRequest();
