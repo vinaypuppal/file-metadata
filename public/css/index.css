@@ -1,0 +1,81 @@
+nav .brand-logo{
+	font-size: 20px;
+    margin-left: 20px;
+}
+
+i.left{
+	font-size: x-large;
+}
+
+.container{
+	color: #888;
+}
+
+blockquote,.card{
+	line-height: 2;
+	border-left-color: #880e4f; 
+}
+
+.card .card-action{
+	text-align: center;
+}
+
+.card .card-content{
+	padding: 0;
+	width: 100%
+}
+
+.card .card-content .card-title{
+	text-align: center;
+	width: 100%;
+}
+
+.card .progress{
+	display: none;
+	margin: 0;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating){
+	color: #880e4f;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover{
+	color: #d81b60;
+}
+
+.card .card-content .img-container{
+	width: 100%;
+	height: 150px;
+}
+
+.card .card-content .img-container .icon{
+	width: 100%;
+	height: 150px;
+	line-height: 150px;
+	font-size: 60px;
+	text-align: center;
+}
+
+pre{
+	margin: 5px;
+}
+
+.row{
+	margin-bottom: 0;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.mt-30{
+	margin-top: 30px;
+}
+
+.page-footer{
+	margin-top: 50px;
+}
+
+@-ms-viewport{
+  width: device-width;
+}
