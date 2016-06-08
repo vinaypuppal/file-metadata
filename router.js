@@ -22,7 +22,7 @@ module.exports = function router(app) {
 		    	result.push({
 		    		filename: file.name,
 		    		filesize: file.size,
-		    		filesizeInMB: [Math.round((file.size/(1024*1024))*100)/100]+'MB',
+		    		filesizeInKB: [Math.round((file.size/(1024))*100)/100]+'KB',
 		    		filetype: file.type,
 		    		url: req.protocol + '://' + req.get('Host') + '/uploads/'+file.name
 		    	});
