@@ -7,6 +7,9 @@
 
 * When I submit something, I will receive the file size in bytes within the JSON response
 
+#### Demo
+
+https://vp-file-metadata.herokuapp.com/
 
 ##### Example Output:
 
