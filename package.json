@@ -19,6 +19,8 @@
   "homepage": "https://github.com/vinaypuppal/file-metadata",
   "dependencies": {
     "express": "^4.13.4",
+    "formidable": "^1.0.17",
+    "mkdirp": "^0.5.1",
     "morgan": "^1.7.0",
     "nodemon": "^1.9.2"
   }
