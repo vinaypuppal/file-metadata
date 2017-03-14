@@ -1,42 +1,30 @@
-var path = require('path');
-var fs = require('fs');
-var formidable = require('formidable');
-var mkdirp = require('mkdirp');
+var path = require('path')
+var formidable = require('formidable')
+var cloudinary = require('cloudinary')
 
-module.exports = function router(app) {
-	app.get('/',function (req,res) {
-		res.sendFile(path.join(__dirname,'/public/index.html'));
-	});
-	app.post('/upload',function(req,res){
-		mkdirp(path.join(__dirname,'/public/uploads'), function(err) { 
-		    // path exists unless there was an error
-		    var form = new formidable.IncomingForm();
-		    var result = [];
-		    form.multiple = true;
-		    if(err) throw err;
-		    form.uploadDir = path.join(__dirname,'/public/uploads');
+cloudinary.config({
+  cloud_name: process.env.CAPI_CLOUD_NAME,
+  api_key: process.env.CAPI_KEY,
+  api_secret: process.env.CAPI_SECRET
+})
 
-		    form.on('file',function(field,file){
-		    	console.log(file);
-		    	fs.rename(file.path,path.join(form.uploadDir,file.name));
-		    	result.push({
-		    		filename: file.name,
-		    		filesize: file.size,
-		    		filesizeInKB: [Math.round((file.size/(1024))*100)/100]+'KB',
-		    		filetype: file.type,
-		    		url: req.protocol + '://' + req.get('Host') + '/uploads/'+file.name
-		    	});
-		    	
-		    });
-		    
-		    form.on('error', function(err) {
-		        console.log('An error has occured: \n' + err);
-		    });
-
-		    form.on('end',function(){
-		    	res.send(result);
-		    });
-		    form.parse(req);
-		});
-	});
+module.exports = function router (app) {
+  app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+  })
+  app.post('/upload', function (req, res) {
+    var form = new formidable.IncomingForm()
+    form.multiple = true
+    form.onPart = function (part) {
+      console.log(part)
+      var stream = cloudinary.uploader.upload_stream(function (result) {
+        res.send(result)
+      })
+      part.pipe(stream)
+    }
+    form.on('error', function (err) {
+      console.log('An error has occured: \n' + err)
+    })
+    form.parse(req)
+  })
 }

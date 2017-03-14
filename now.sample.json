@@ -1,0 +1,10 @@
+{
+	"name": "file-upload-ms",
+	"alias": "fmd.now.sh",
+	"env": {
+		"NODE_ENV": "production",
+		"CAPI_CLOUD_NAME": "<>",
+		"CAPI_KEY": "<>",
+  	"CAPI_SECRET": "<>"
+	}
+}

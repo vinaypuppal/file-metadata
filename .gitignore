@@ -32,3 +32,6 @@ public/uploads
 
 # Optional REPL history
 .node_repl_history
+
+#now
+now.json
